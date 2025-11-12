@@ -18,15 +18,15 @@ const Index = () => {
     },
     {
       name: 'Домик',
-      profile: '20/20',
+      profile: '20/40',
       width: '3м',
       step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
       image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/9be2017b-b645-45b6-b7d5-126cd1f5fb1c.jpg'
     },
     {
-      name: 'Сказка',
-      profile: '20/20',
+      name: 'Кремлёвская сказка',
+      profile: '25/25',
       width: '3м',
       step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
@@ -59,10 +59,10 @@ const Index = () => {
   ];
 
   const polycarbonate = [
-    { name: '4мм', type: 'Стандарт' },
-    { name: '6мм', type: 'Стандарт' },
+    { name: '4мм', type: 'Премиум' },
+    { name: '6мм', type: 'Премиум' },
     { name: '6мм цветной', type: 'Премиум' },
-    { name: '8мм', type: 'Стандарт' },
+    { name: '8мм', type: 'Премиум' },
     { name: '8мм цветной', type: 'Премиум' }
   ];
 
@@ -80,11 +80,24 @@ const Index = () => {
   const gazebos = [
     {
       name: 'Пион',
-      description: 'Сварной элемент беседки - 3 шт; соединительные перемычки - 6 шт; Доска 25×200×2000 - 12 шт; Поликарбонат - 6 метров'
+      description: 'Сварной элемент беседки - 3 шт; соединительные перемычки - 6 шт; Доска 25×200×2000 - 12 шт; Поликарбонат - 6 метров. Каркас: оцинкованная труба'
     },
     {
       name: 'Астра',
-      description: 'Размер: ширина по основанию 1,73 м, ширина по верху 2,43 м, высота 2,02 м, длина 1,9 м. Каркас: квадратная оцинкованная труба 40×20 мм'
+      description: 'Размер: ширина по основанию 1,73 м, ширина по верху 2,43 м, высота 2,02 м, длина 1,9 м. Каркас: оцинкованная труба 40×20 мм'
+    }
+  ];
+
+  const carports = [
+    {
+      name: 'Автонавес',
+      profile: '25/25',
+      width: '3,5м',
+      height: '2,6м',
+      arcStep: '1м',
+      description: 'Дуги двойные разъемные',
+      lengths: ['4м', '6м', '8м', '10м'],
+      image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/bba25ef3-2715-4d98-93e9-0b27d93aa424.jpg'
     }
   ];
 
@@ -182,13 +195,17 @@ const Index = () => {
           <h2 className="text-4xl font-bold text-center mb-12">Каталог продукции</h2>
           
           <Tabs defaultValue="greenhouses" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3">
+            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-4">
               <TabsTrigger value="greenhouses">Теплицы</TabsTrigger>
               <TabsTrigger value="polycarbonate">Поликарбонат</TabsTrigger>
               <TabsTrigger value="gazebos">Беседки</TabsTrigger>
+              <TabsTrigger value="carports">Автонавесы</TabsTrigger>
             </TabsList>
 
             <TabsContent value="greenhouses" className="mt-8">
+              <div className="mb-6 text-center">
+                <Badge variant="default" className="text-base px-4 py-2">Все теплицы с оцинкованным каркасом</Badge>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {greenhouseTypes.map((greenhouse, index) => (
                   <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -264,6 +281,9 @@ const Index = () => {
             </TabsContent>
 
             <TabsContent value="gazebos" className="mt-8">
+              <div className="mb-6 text-center">
+                <Badge variant="default" className="text-base px-4 py-2">Все беседки с оцинкованным каркасом</Badge>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 {gazebos.map((gazebo, index) => (
                   <Card key={index}>
@@ -274,6 +294,44 @@ const Index = () => {
                       <p className="text-muted-foreground mb-6">{gazebo.description}</p>
                       <Button className="w-full" asChild>
                         <a href="tel:79376722082">Узнать цену</a>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="carports" className="mt-8">
+              <div className="mb-6 text-center">
+                <Badge variant="default" className="text-base px-4 py-2">Оцинкованный каркас</Badge>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {carports.map((carport, index) => (
+                  <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                    <img
+                      src={carport.image}
+                      alt={carport.name}
+                      className="w-full h-48 object-cover"
+                    />
+                    <CardHeader>
+                      <CardTitle className="text-xl">{carport.name}</CardTitle>
+                      <p className="text-sm text-muted-foreground mt-2">{carport.description}</p>
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        <Badge variant="secondary">Труба {carport.profile}</Badge>
+                        <Badge variant="outline">Ширина {carport.width}</Badge>
+                        <Badge variant="outline">Высота {carport.height}</Badge>
+                        <Badge variant="outline">Шаг дуг {carport.arcStep}</Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground mb-3">Доступные длины:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {carport.lengths.map((length) => (
+                          <Badge key={length} variant="secondary">{length}</Badge>
+                        ))}
+                      </div>
+                      <Button className="w-full mt-4" asChild>
+                        <a href="tel:79376722082">Заказать</a>
                       </Button>
                     </CardContent>
                   </Card>
