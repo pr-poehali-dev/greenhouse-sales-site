@@ -9,44 +9,50 @@ import { CheckCircle2 } from 'lucide-react';
 const Index = () => {
   const greenhouseTypes = [
     {
-      name: 'Капля',
+      name: 'Стрелка',
       profile: '25/25',
       width: '3м',
+      step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
       image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/bba25ef3-2715-4d98-93e9-0b27d93aa424.jpg'
     },
     {
-      name: 'Домиком (треугольная крыша)',
+      name: 'Домик',
       profile: '20/20',
       width: '3м',
+      step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
       image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/9be2017b-b645-45b6-b7d5-126cd1f5fb1c.jpg'
     },
     {
-      name: 'Домиком (полукруглая крыша)',
+      name: 'Сказка',
       profile: '20/20',
       width: '3м',
+      step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
       image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/bba25ef3-2715-4d98-93e9-0b27d93aa424.jpg'
     },
     {
-      name: 'Арочная',
+      name: 'Урожайная',
       profile: '25/25',
       width: '3м',
+      step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
       image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/9be2017b-b645-45b6-b7d5-126cd1f5fb1c.jpg'
     },
     {
-      name: 'Арочная усиленная',
+      name: 'Оптима',
       profile: '20/30',
       width: '3м',
+      step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
       image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/bba25ef3-2715-4d98-93e9-0b27d93aa424.jpg'
     },
     {
-      name: 'Арочная максимальная',
+      name: 'Волжанка',
       profile: '20/40',
       width: '3м',
+      step: '1м/0,65м',
       lengths: ['4м', '6м', '8м', '10м'],
       image: 'https://cdn.poehali.dev/projects/07213bc3-ac38-408f-b976-5536284732e0/files/9be2017b-b645-45b6-b7d5-126cd1f5fb1c.jpg'
     }
@@ -193,9 +199,10 @@ const Index = () => {
                     />
                     <CardHeader>
                       <CardTitle className="text-xl">{greenhouse.name}</CardTitle>
-                      <div className="flex gap-2 mt-2">
+                      <div className="flex flex-wrap gap-2 mt-2">
                         <Badge variant="secondary">Профиль {greenhouse.profile}</Badge>
                         <Badge variant="outline">Ширина {greenhouse.width}</Badge>
+                        <Badge variant="outline">Шаг {greenhouse.step}</Badge>
                       </div>
                     </CardHeader>
                     <CardContent>
